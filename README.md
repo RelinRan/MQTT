@@ -1,18 +1,18 @@
-### MQTT
+#### MQTT
 
 Android MQTT连接,重新编译Service-1.1.1兼容Android高版本服务   
 Paho Android Service-1.1.1      
 Paho Client Mqtt3-1.1.0
 
-### 资源
+#### 资源
 
 |名字|资源|
 |-|-|
-|AAR|[下载](https://github.com/RelinRan/MqttCore/blob/master/aar)|
-|GitHub |[查看](https://github.com/RelinRan/MqttCore)|
-|Gitee|[查看](https://gitee.com/relin/MqttCore)|
+|AAR|[下载](https://github.com/RelinRan/MQTT/tree/main/aar)|
+|GitHub |[查看](https://github.com/RelinRan/MQTT)|
+|Gitee|[查看](https://gitee.com/relin/MQTT)|
 
-### Maven
+#### Maven
 
 1.build.grade
 
@@ -29,11 +29,11 @@ allprojects {
 
 ```
 dependencies {
-	implementation 'com.github.RelinRan:MqttCore:2023.9.23.1'
+	implementation 'com.github.RelinRan:MQTT:2023.9.23.1'
 }
 ```
 
-### 初始化
+#### 初始化
 
 配置权限
 
@@ -61,7 +61,7 @@ options.setPassword("64ac769d2f523d48730294bffe6323a566005543e3e372c802903f748f1
 Imqtt mqtt = Mqtt.initialize(this,options);
 ```
 
-### 添加连接监听
+#### 监听连接
 
 ```
 long cid = mqtt.addConnectListener(new OnConnectListener() {
@@ -83,7 +83,7 @@ long cid = mqtt.addConnectListener(new OnConnectListener() {
 });
 ```
 
-### 添加消息监听
+#### 监听消息
 
 ```
 long mid = mqtt.addMessageListener(new OnMessageListener() {
@@ -101,37 +101,31 @@ long mid = mqtt.addMessageListener(new OnMessageListener() {
 });
 ```
 
-### 连接服务
+#### 服务连接
 
 ```
 mqtt.connect();
 ```
 
-### 移除消息监听
+#### 监听移除
 
 ```
-mqtt.remove(mid);
+mqtt.remove(mid,cid);
 ```
 
-### 移除连接监听
-
-```
-mqtt.remove(cid);
-```
-
-### 移除所有监听
+#### 监听清空
 
 ```
 mqtt.clear();
 ```
 
-### 发送内容
+#### 发送内容
 
 ```
 mqtt.publish(String topic, String payload);
 ```
 
-### 订阅主题
+#### 订阅主题
 
 ```
 mqtt.subscribe(String topic);
